@@ -1,3 +1,4 @@
+package BuildingClass;
 public class Room {
 private double length;
 private double width;
@@ -24,6 +25,6 @@ public double getWidth(){
 }
 
 public String toString(){
-    return "#123";
+    return "Length: " + getLength() + ", " + "Width: " + getWidth();
 }
 }

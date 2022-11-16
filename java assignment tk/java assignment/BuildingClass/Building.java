@@ -1,3 +1,4 @@
+package BuildingClass;
 import java.util.ArrayList;
 
 public abstract class Building {
@@ -18,6 +19,10 @@ public abstract class Building {
         return this.rooms;
     }
 
+    public void setRoom(ArrayList<Room> rooms){
+        this.rooms = rooms;
+    }
+
     public Room addRoom(double length, double width){
         Room room = new Room(length, width);
         this.rooms.add(room);
@@ -33,11 +38,9 @@ public abstract class Building {
         this.rooms.remove(roomNo-1);
     }
 
-    public void printRooms(){
-        for (int x = 0; x < this.rooms.size(); x++) {
-            double currentRoom_length = this.rooms.get(x).getLength();
-            double currentRoom_width = this.rooms.get(x).getWidth();
-            System.out.println("Room " + x + ": Length = " + currentRoom_length + ", Width = " + currentRoom_width);
+    public void printRooms() {
+        for (int a = 0; a < rooms.size(); a++){
+            System.out.println("Room No.: " + (a+1) +  ", " + rooms.get(a));
         }
     }
 

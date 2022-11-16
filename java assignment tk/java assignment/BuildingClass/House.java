@@ -1,3 +1,4 @@
+package BuildingClass;
 public class House extends Building {
     private int noOfFloors;
 
@@ -12,12 +13,14 @@ public class House extends Building {
         return noOfFloors;
     }
     public void modifyBuilding(){
-        
+        //to be continue
     }
     public void printBuilding(){
-        System.out.println("print what??");
+        System.out.println("Building No: " + getId());
+        System.out.println("No of Floors: " + getFloors());
+        printRooms();
     }
     public String toString(){
-        return " "; 
+        return "Building No.: " + getId() + ", No. of Floors: " + getFloors(); 
     }
 }
