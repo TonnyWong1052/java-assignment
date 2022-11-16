@@ -52,43 +52,32 @@ public class Caretaker {
 
     public void undo() {
         if (undo.size() != 0) {
-            if (undo.get(undo.size() - 1) instanceof ApartmentMemento) {
-                ApartmentMemento apartmentMemento = (ApartmentMemento) undo.remove(undo.size() - 1);
-                redo.addLast(apartmentMemento);
+            if (undo.getLast() instanceof ApartmentMemento) {
+                ApartmentMemento apartmentMemento = (ApartmentMemento) undo.removeLast();
                 apartmentMemento.redoData();
-                undo.remove(redo.size() - 1);
-            } else if (undo.get(undo.size() - 1) instanceof HouseMemento) {
-                HouseMemento houseMemento = (HouseMemento) undo.remove(undo.size() - 1);
-                redo.addLast(houseMemento);
+                redo.addFirst(apartmentMemento);
+            } else if (undo.getLast() instanceof HouseMemento) {
+                HouseMemento houseMemento = (HouseMemento) undo.removeLast();
                 houseMemento.redoData();
+                redo.addFirst(houseMemento);
             } else {
+
             }
         }
     }
 
-    // public void undo() {
-    // if (undoList.isEmpty()) {
-    // System.out.println("Nothing to Undo!");
-    // } else {
-    // BuildingMemento memento = undoList.pop();
-    // redoList.add(memento);
-    // memento.restore();
-    // }
-    // }
-
     public void redo() {
         if (redo.size() != 0) {
-            if (undo.get(undo.size() - 1) instanceof ApartmentMemento) {
-                ApartmentMemento apartmentMemento = (ApartmentMemento) undo.get(undo.size() -
-                        1);
+            if (redo.getLast() instanceof ApartmentMemento) {
+                ApartmentMemento apartmentMemento = (ApartmentMemento) redo.removeLast();
                 apartmentMemento.getCommand().execute();
-                undo.add(apartmentMemento);
-                redo.remove(redo.size() - 1);
-            } else if (undo.get(undo.size() - 1) instanceof HouseMemento) {
-                HouseMemento houseMemento = (HouseMemento) undo.get(undo.size() - 1);
+                undo.addLast(apartmentMemento);
+            } else if (redo.getLast() instanceof HouseMemento) {
+                HouseMemento houseMemento = (HouseMemento) redo.removeLast();
                 houseMemento.getCommand().execute();
-                undo.add(houseMemento);
-                redo.remove(redo.size() - 1);
+                undo.addLast(houseMemento);
+            } else {
+                
             }
         }
     }
