@@ -14,4 +14,10 @@ public class Undo implements Command {
         caretaker.undo();
     }
 
+    @Override
+    public void printDetail() {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

@@ -13,5 +13,11 @@ public class Redo implements Command{
     public void execute() {
         caretaker.redo();
     }
+
+    @Override
+    public void printDetail() {
+        // TODO Auto-generated method stub
+        
+    }
     
 }
